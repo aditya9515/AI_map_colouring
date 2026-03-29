@@ -9,7 +9,7 @@ def build_adjacency_graph(region_labels: np.ndarray, region_ids: List[int]) -> D
     other region labels it touches.
     """
     adjacency: Dict[int, Set[int]] = {rid: set() for rid in region_ids}
-    kernel = np.ones((3, 3), np.uint8)
+    kernel = np.ones((21, 21), np.uint8)
 
     region_masks = {
         rid: (region_labels == rid).astype(np.uint8)

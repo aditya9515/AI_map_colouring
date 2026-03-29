@@ -55,6 +55,7 @@ def detect_regions(line_mask: np.ndarray) -> Tuple[np.ndarray, List[int]]:
         filtered_labels: labeled region map, 0 = background/non-region
         region_ids: list of valid region IDs
     """
+    np.set_printoptions(threshold=np.inf)
     h, w = line_mask.shape
 
     # Make a working copy
@@ -94,5 +95,7 @@ def detect_regions(line_mask: np.ndarray) -> Tuple[np.ndarray, List[int]]:
             filtered_labels[labels == label_id] = next_region_id
             region_ids.append(next_region_id)
             next_region_id += 1
-
+    print("ADA filtered labels = ", filtered_labels)
+    with open("output.txt", "w") as f:
+        f.write(str(filtered_labels))
     return filtered_labels, region_ids
