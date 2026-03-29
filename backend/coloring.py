@@ -22,6 +22,7 @@ def color_graph(adjacency: Dict[int, Set[int]], max_colors: int = MAX_COLORS) ->
     Backtracking graph coloring with up to 4 colors.
     """
     coloring: Dict[int, int] = {}
+    print("ADA Starting graph coloring with adjacency:", adjacency)
 
     def backtrack() -> bool:
         node = select_uncolored_node(coloring, adjacency)
@@ -38,4 +39,6 @@ def color_graph(adjacency: Dict[int, Set[int]], max_colors: int = MAX_COLORS) ->
         return False
 
     success = backtrack()
+    print("ADA colouring success:", success)
+    print("ADA Coloring result:", coloring)
     return coloring if success else None

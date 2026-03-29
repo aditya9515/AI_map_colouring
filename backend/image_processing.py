@@ -77,13 +77,6 @@ def detect_regions(line_mask: np.ndarray) -> Tuple[np.ndarray, List[int]]:
     # Remaining white areas are enclosed regions
     enclosed = np.where(flood == 255, 255, 0).astype(np.uint8)
 
-    # Debug windows
-    cv2.imshow("line_mask", line_mask)
-    cv2.imshow("spaces", spaces)
-    cv2.imshow("enclosed", enclosed)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
     # Connected components on enclosed regions
     num_labels, labels, stats, _ = cv2.connectedComponentsWithStats(
         enclosed,

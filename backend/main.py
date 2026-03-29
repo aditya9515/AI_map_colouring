@@ -25,12 +25,14 @@ def health():
 @app.post("/process-map")
 async def process_map(file: UploadFile = File(...)):
     try:
+        print("ADA started ")
         file_bytes = await file.read()
         image_bgr = decode_image(file_bytes)
-
+        print("ADA decoed image ")
         gray, line_mask = preprocess_image(image_bgr)
+        print("ADA process image ")
         region_labels, region_ids = detect_regions(line_mask)
-
+        print("ADA started detected regions")
         if not region_ids:
             raise HTTPException(
                 status_code=400,
