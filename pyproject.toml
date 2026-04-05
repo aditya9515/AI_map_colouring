@@ -9,6 +9,8 @@ dependencies = [
     "networkx>=3.6.1",
     "numpy>=2.4.3",
     "opencv-python>=4.13.0.92",
+    "pillow>=12.1.1",
     "python-multipart>=0.0.22",
+    "streamlit>=1.55.0",
     "uvicorn>=0.42.0",
 ]
